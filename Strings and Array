@@ -2,6 +2,7 @@
 #include<string.h>
 using namespace std;
 
+//checking the length of string without using strlen function
 int getLength(char name[]) {
         int length = 0;
         int i = 0; 
@@ -13,6 +14,7 @@ int getLength(char name[]) {
         return length;
 }
 
+//Using two pointers approach to reverse a string
 void reverseCharArray(char name[]) {
         int i = 0;
         int n = getLength(name);
