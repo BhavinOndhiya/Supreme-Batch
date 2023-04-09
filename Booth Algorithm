@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+// Function to perform Booth's algorithm for multiplication
+int booth_multiplication(int x, int y) {
+    int result = 0;
+
+    while (y != 0) {
+        if (y & 1) {  // if the rightmost bit of y is 1
+            result += x;  // add x to the result
+        }
+        x <<= 1;  // shift x to the left by one bit
+        y >>= 1;  // shift y to the right by one bit
+    }
+
+    return result;
+}
+
+// Driver code
+int main() {
+    int x, y;
+    cout << "Enter the two numbers to be multiplied: ";
+    cin >> x >> y;
+    cout << "Product of " << x << " and " << y << " is " << booth_multiplication(x, y) << endl;
+    return 0;
+}
