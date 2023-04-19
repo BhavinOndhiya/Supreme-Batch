@@ -1,8 +1,16 @@
-//About Stack
-
 #include <iostream>
 #include <stack>
 using namespace std;
+// Print the queue
+void showq(queue<int> gq)
+{
+	queue<int> g = gq;
+	while (!g.empty()) {
+		cout << '\t' << g.front();
+		g.pop();
+	}
+	cout << '\n';
+}
 int main() {
 	stack<int> stack;
 	stack.push(21);// The values pushed in the stack should be of the same data which is written during declaration of stack
@@ -19,4 +27,21 @@ int main() {
 		cout << stack.top() <<" ";
 		stack.pop();
 	}
+	queue<int> gquiz;
+	gquiz.push(10);
+	gquiz.push(20);
+	gquiz.push(30);
+
+	cout << "The queue gquiz is : ";
+	showq(gquiz);
+
+	cout << "\ngquiz.size() : " << gquiz.size();
+	cout << "\ngquiz.front() : " << gquiz.front();
+	cout << "\ngquiz.back() : " << gquiz.back();
+
+	cout << "\ngquiz.pop() : ";
+	gquiz.pop();
+	showq(gquiz);
+
+	return 0;
 }
