@@ -66,6 +66,48 @@ int main() {
 	cout << "\ngquiz.pop() : ";
 	gquiz.pop();
 	showq(gquiz);
+	
+	#include <iostream>
+#include <forward_list>
+
+using namespace std;
+
+int main()
+{
+    forward_list<int> myList;
+
+    // Insert elements at the front of the list
+    myList.push_front(1);
+    myList.push_front(2);
+    myList.push_front(3);
+
+    // Traverse the list and print each element
+    for (auto it = myList.begin(); it != myList.end(); ++it) {
+        cout << *it << " ";
+    }
+    cout << endl;
+
+    // Insert an element after the first element
+    auto it = myList.begin();
+    ++it;
+    myList.insert_after(it, 4);
+
+    // Traverse the list and print each element again
+    for (auto it = myList.begin(); it != myList.end(); ++it) {
+        cout << *it << " ";
+    }
+    cout << endl;
+
+    // Remove the second element from the list
+    auto it2 = myList.begin();
+    ++it2;
+    myList.erase_after(it2);
+
+    // Traverse the list and print each element again
+    for (auto it = myList.begin(); it != myList.end(); ++it) {
+        cout << *it << " ";
+    }
+    cout << endl;
 
 	return 0;
 }
