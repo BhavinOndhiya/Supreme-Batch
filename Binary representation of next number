@@ -1,0 +1,16 @@
+string nextGreater(num)
+  l = num.length
+
+  // Find first 0 from right side. While
+  // searching, convert 1s to 0s
+  for i = l-1 to 0
+    if num[i] == '0'
+       num[i] = '1'
+       break
+    else
+       num[i] = '0'
+         
+  // If there was no 0  
+  if i < 0
+      num = '1' + num
+  return num
