@@ -1,0 +1,71 @@
+#include <bits/stdc++.h>
+using namespace std;
+char kthNonRepeatingChar(string str, int k)
+{
+    // Initialize count and result variables to 0 and null
+    // character, respectively
+    int count = 0;
+    char result = '\0';
+ 
+    // Loop through each character in the string
+    for (int i = 0; i < str.length(); i++) {
+        // Assume that the current character does not repeat
+        bool repeating = false;
+ 
+        // Loop through the rest of the string to check if
+        // the current character repeats
+        for (int j = i + 1; j < str.length(); j++) {
+            if (str[i] == str[j]) {
+                // If the current character repeats, set the
+                // repeating flag to true and exit the loop
+                repeating = true;
+                break;
+            }
+        }
+ 
+        // If the current character does not repeat,
+        // increment the count of non-repeating characters
+        if (!repeating) {
+            count++;
+            // If the count of non-repeating characters
+            // equals k, set the result variable to the
+            // current character and exit the loop
+            if (count == k) {
+                result = str[i];
+                break;
+            }
+        }
+    }
+ 
+    // Return the result variable
+    return result;
+}
+ 
+// Define the main function to test the kthNonRepeatingChar
+// function
+int main()
+{
+    // Define an example string and value of k
+    string str = "geeksforgeeks";
+    int k = 3;
+ 
+    // Call the kthNonRepeatingChar function with the
+    // example string and value of k
+    char result = kthNonRepeatingChar(str, k);
+ 
+    // Check if the result variable contains a non-null
+    // character and print the appropriate message
+    if (result == '\0') {
+        cout << "There is no kth non-repeating character "
+                "in the string.\n";
+    }
+    else {
+        cout << "The " << k
+             << "th non-repeating character in the string "
+                "is "
+             << result << ".\n";
+    }
+ 
+    // End the program
+    return 0;
+}
