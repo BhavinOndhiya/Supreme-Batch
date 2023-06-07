@@ -1,0 +1,70 @@
+#include <bits/stdc++.h>
+#include <iostream>
+using namespace std;
+
+bool check_palindrome(string s, int index, int i)
+{
+	while (index <= i) {
+		if (s[index++] != s[i--])
+			return 0;
+	}
+	return 1;
+}
+// by refer
+void the_helper(vector<vector<string> >& result,
+				vector<string>& dump, string s, int n,
+				int index)
+{
+	// base case avoid >= because here we need only unique
+	// combination not repeating just 1 at 2 and 2 at 1.
+	if (index == n) {
+		result.push_back(dump);
+		return;
+	}
+	// main worker of the program.
+	for (int i = index; i < n; i++) {
+		// if s.substr till i from index is palindrome.
+		if (check_palindrome(s, index, i)) {
+			dump.push_back(s.substr(index, i - index + 1));
+			the_helper(result, dump, s, n, i + 1);
+			// backtracting.
+			dump.pop_back();
+		}
+	}
+}
+int main()
+{
+	string s = "bcc";
+	// size of string.
+	int n = s.size();
+	// where all possible partitions we store.
+	vector<vector<string> > result;
+	// for temporary storage.
+	vector<string> dump;
+	// The Helper function call.
+	the_helper(result, dump, s, n, 0);
+	int row_l = result.size();
+	cout << "All Possible palindromic partitions of a "
+			"string : "
+		<< endl;
+	cout << "[";
+	for (int i = 0; i < row_l; i++) {
+		cout << "[";
+		int m = result[i].size();
+		for (int j = 0; j < m; j++) {
+			if (j == m - 1) {
+				cout << result[i][j];
+				continue;
+			}
+			cout << result[i][j] << ",";
+		}
+		if (i == row_l - 1) {
+			cout << "]";
+			continue;
+		}
+		cout << "],";
+	}
+	cout << "]";
+	// code by Sanket Gode
+	return 0;
+}
