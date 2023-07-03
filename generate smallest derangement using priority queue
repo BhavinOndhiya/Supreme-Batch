@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void generate_derangement(int N)
+{
+	// Generate Sequence and insert into a
+	// priority queue.
+	int S[N + 1];
+	priority_queue<int, vector<int>, greater<int> > PQ;
+	for (int i = 1; i <= N; i++) {
+		S[i] = i;
+		PQ.push(S[i]);
+	}
+
+	// Generate Least Derangement
+	int D[N + 1];
+	for (int i = 1; i <= N; i++) {
+		int d = PQ.top();
+		PQ.pop();
+		if (d != S[i] || i == N) {
+			D[i] = d;
+		}
+		else {
+			D[i] = PQ.top();
+			PQ.pop();
+			PQ.push(d);
+		}
+	}
+
+	if (D[N] == S[N])
+	swap(D[N-1], D[N]);
+
+	// Print Derangement
+	for (int i = 1; i <= N; i++)
+		printf("%d ", D[i]);
+	printf("\n");
+}
+
+// Driver code
+int main()
+{
+	generate_derangement(10);
+	return 0;
+}
