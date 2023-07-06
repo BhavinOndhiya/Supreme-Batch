@@ -1,0 +1,20 @@
+class Solution{
+    //Function to find the leaders in the array.
+    public:
+    vector<int> leaders(int a[], int n) {
+    vector<int> ans;
+    int maxElement = a[n - 1];  // Initialize the maximum element as the last element
+    ans.push_back(maxElement);  // The last element is always a leader
+
+    // Traverse the array from right to left
+    for (int i = n - 2; i >= 0; i--) {
+        if (a[i] >= maxElement) {
+            maxElement = a[i];
+            ans.push_back(maxElement);
+        }
+    }
+    reverse(ans.begin(), ans.end());  
+    return ans;
+}
+
+};
