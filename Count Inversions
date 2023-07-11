@@ -1,0 +1,53 @@
+class Solution{
+  public:
+    long long int merge(long long arr[], long long low, long long med, long long high, long long int count)
+    {
+         vector<long long> res(high-low+1);
+            int i = low, j = med+1, k= 0;
+            while(i <= med && j <= high)
+            {
+                if(arr[i] <= arr[j])
+                {
+                    res[k++]= arr[i++];
+                }
+                else {
+                    res[k++] = arr[j++];
+                    count = count + med + 1 - i;
+                }
+            }
+        
+            while(i <= med) {
+                res[k++] = arr[i++];
+            }
+            while(j <= high) {
+                res[k++] = arr[j++];
+            }
+            int p = low;
+            for(int i = 0; i < k; i++)
+                arr[low++] = res[i];
+            return count;
+    }
+    
+    
+    
+    long long int mergeSort(long long arr[], long long low, long long high, long long int res)
+    {
+        if(low < high)
+        {
+          int m = (low + high)/2;
+          res = mergeSort(arr, low , m, res);
+          res = mergeSort(arr, m+1, high, res);
+          res = merge(arr, low, m, high, res);  
+        }
+        return res;
+    }
+    
+    long long int inversionCount(long long arr[], long long N)
+    {
+        // Your Code Here
+        long long int res = 0;
+        int low = 0, high = N-1;
+        return mergeSort(arr, low, high, res);
+    }
+
+};
