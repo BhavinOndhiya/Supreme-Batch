@@ -1,0 +1,17 @@
+//Function to reverse the queue.
+class Solution
+{
+    public:
+    queue<int> rev(queue<int> q)
+    {
+        vector<int> v;
+        while(q.size()){
+            v.push_back(q.front());
+            q.pop();
+        }
+        for(int x = v.size() - 1; x >= 0; x--){
+            q.push(v[x]);
+        }
+        return q;
+    }
+};
