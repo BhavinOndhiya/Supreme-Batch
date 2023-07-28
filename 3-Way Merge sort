@@ -12,7 +12,7 @@ void merge(vector<int> &gArray, int low, int mid1,
             {
                 destArray[l++] = gArray[i++];
             }
-            else
+            elsesrb
             {
                 destArray[l++] = gArray[k++];
             }
