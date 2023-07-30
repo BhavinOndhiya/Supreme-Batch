@@ -3,7 +3,7 @@ using namespace std;
 void compAndSwap(int a[], int i, int j, int dir)
 {
     if (dir==(a[i]>a[j]))
-        swap(a[i],a[j]);
+        swap(a[i],a[j]);//swapping the numbers
 }
 void bitonicMerge(int a[], int low, int cnt, int dir)
 {
